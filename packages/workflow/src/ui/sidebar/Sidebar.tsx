@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useProvider } from "../Provider";
-import { SidebarWorkflowForm } from "./WorfklowForm";
+import { SidebarWorkflowForm } from "./WorkflowForm";
 import { SidebarFooter } from "./Footer";
 import { ActionList } from "./ActionList";
 import { SidebarActionForm } from "./ActionForm";
