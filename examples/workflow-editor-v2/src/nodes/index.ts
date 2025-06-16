@@ -1,4 +1,4 @@
-import { NodeTypes } from "@xyflow/react";
+import type { NodeTypes, NodeProps } from "@xyflow/react";
 import { triggerNodeFactory } from "./TriggerNode";
 import { BlankNode } from "./BlankNode";
 import {
@@ -13,10 +13,12 @@ import {
 export const nodeTypes: NodeTypes = {
   trigger: triggerNodeFactory,
   blank: BlankNode,
-  email: EmailNode,
-  delay: DelayNode,
-  agent: AgentNode,
-  mcp: McpNode,
-  memory: MemoryNode,
-  storage: StorageNode,
+  email: ({ data }: NodeProps) => <EmailNode action={(data as any).action} />,
+  delay: ({ data }: NodeProps) => <DelayNode action={(data as any).action} />,
+  agent: ({ data }: NodeProps) => <AgentNode action={(data as any).action} />,
+  mcp: ({ data }: NodeProps) => <McpNode mcp={(data as any).mcp} />,
+  memory: ({ data }: NodeProps) => <MemoryNode memory={(data as any).memory} />,
+  storage: ({ data }: NodeProps) => (
+    <StorageNode storage={(data as any).storage} />
+  ),
 };
