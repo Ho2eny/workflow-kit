@@ -9,6 +9,7 @@ export interface WorkflowEdge {
 export interface Workflow {
   id: string;
   name: string;
+  description?: string;
   actions: AnyAction[];
   edges: WorkflowEdge[]; // optional manual overrides – auto edges generated in UI
 }

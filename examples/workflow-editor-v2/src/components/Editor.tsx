@@ -10,6 +10,7 @@ import {
 import { nodeTypes } from "../nodes";
 import { buildGraph } from "../utils/parseWorkflow";
 import { useProvider } from "./Provider";
+import { SidebarWorkflowForm } from "./WorkflowForm";
 import { useLayout } from "../utils/layout";
 
 export type Direction = "right" | "down";
@@ -55,17 +56,20 @@ const EditorInner: React.FC<EditorProps> = ({ direction = "down" }) => {
   }, [workflow, direction]);
 
   return (
-    <div ref={ref} className="wf-editor">
-      <ReactFlow
-        nodeTypes={nodeTypes}
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange as (changes: NodeChange[]) => void}
-        onEdgesChange={onEdgesChange}
-        edgesFocusable={false}
-        edgesReconnectable={false}
-        proOptions={{ hideAttribution: true }}
-      />
+    <div>
+      <div ref={ref} className="wf-editor">
+        <ReactFlow
+          nodeTypes={nodeTypes}
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange as (changes: NodeChange[]) => void}
+          onEdgesChange={onEdgesChange}
+          edgesFocusable={false}
+          edgesReconnectable={false}
+          proOptions={{ hideAttribution: true }}
+        />
+      </div>
+      <SidebarWorkflowForm />
     </div>
   );
 };
