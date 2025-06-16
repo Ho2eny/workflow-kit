@@ -10,6 +10,8 @@ import {
 import { Workflow } from "../types/workflow";
 import { getLayoutedElements } from "./layout";
 
+const SMALL = { width: 120, height: 60 };
+
 export const buildGraph = (
   workflow: Workflow,
   direction: "down" | "right" = "down"
@@ -51,6 +53,7 @@ export const buildGraph = (
           type: "mcp",
           data: { mcp, parentId: baseId },
           position: { x: 0, y: 0 },
+          style: SMALL,
         });
         edges.push({ id: uuid(), source: baseId, target: mcp.id, type: "smoothstep" });
       });
@@ -63,6 +66,7 @@ export const buildGraph = (
         type: "memory",
         data: { memory: mem, parentId: baseId },
         position: { x: 0, y: 0 },
+        style: SMALL,
       });
       edges.push({ id: uuid(), source: baseId, target: memId, type: "smoothstep" });
 
@@ -74,6 +78,7 @@ export const buildGraph = (
         type: "storage",
         data: { storage: stg, parentId: memId },
         position: { x: 0, y: 0 },
+        style: SMALL,
       });
       edges.push({ id: uuid(), source: memId, target: stgId, type: "smoothstep" });
     }
